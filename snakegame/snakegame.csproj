@@ -167,6 +167,8 @@
     <Content Include="gimages\97.PNG" />
     <Content Include="gimages\98.PNG" />
     <Content Include="gimages\99.PNG" />
+    <Content Include="images\wallpapaer1.jpg" />
+    <Content Include="images\pxfuel.jpg" />
     <Content Include="images\snakegame.jpg" />
     <Content Include="images\white.png" />
     <Content Include="images\red.png" />
