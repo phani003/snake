@@ -67,6 +67,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="dice\1.PNG" />
+    <Content Include="dice\2.PNG" />
+    <Content Include="dice\3.PNG" />
+    <Content Include="dice\4.PNG" />
+    <Content Include="dice\5.PNG" />
+    <Content Include="dice\6.PNG" />
     <Content Include="gimages\1.PNG" />
     <Content Include="gimages\10.PNG" />
     <Content Include="gimages\100.PNG" />
