@@ -38,7 +38,7 @@
         function dubleplayers() {
 
             let numbers = Math.floor((Math.random() * 6) + 1);
-            alert(numbers);
+            /*alert(numbers);*/
             let redplayer = $("#hdnred").val();
             let yellowplayer = $("#hdnyellow").val();
 
@@ -58,27 +58,44 @@
 
                     let player111 = Number(numbers) + Number(redplayer);
 
-                    player11 = laddervalue(player111);
+
+                    if (player111 <= 100) {
+
+                        player11 = laddervalue(player111);
 
 
-                    $("#r" + redplayer).hide();
+                        $("#r" + redplayer).hide();
+
+                    } else {
+
+                        player11 = Number(redplayer);
+
+
+                        /*$("#r" + redplayer).hide();*/
+
+
+                    }
+
+                  
                 }
 
 
                 $("#r" + player11).show();
 
-                $("#w" + player11).css("background-color", "orange");
+                $("#r" + player11).css("background-color", "orange");
 
                 $("#hdnred").val(player11);
 
                 $("#player").val("2");
+
+                $("#labelname").text("Player 2");
 
             } else if (players == 2) {
 
 
 
                 let player22 = "";
-
+                
                 if (yellowplayer == "") {
 
                     player22 = laddervalue(numbers);
@@ -87,21 +104,35 @@
 
                     let player222 = Number(numbers) + Number(yellowplayer);
 
-                    player22 = laddervalue(player222);
+                    if (player222 <= 100) {
 
-                    $("#y" + yellowplayer).hide();
+                        player22 = laddervalue(player222);
+
+
+                        $("#y" + yellowplayer).hide();
+
+                    } else {
+
+                        player22 = Number(yellowplayer);
+
+
+                       /* $("#y" + yellowplayer).hide();*/
+
+
+                    }
 
                 }
 
 
                 $("#y" + player22).show();
 
-                $("#w" + player22).css("background-color", "green");
+                $("#y" + player22).css("background-color", "green");
 
                 $("#hdnyellow").val(player22);
 
                 $("#player").val("1");
 
+                $("#labelname").text("Player 1");
 
 
             }
@@ -147,7 +178,7 @@
         function cubepress() {
 
             let numbers = Math.floor((Math.random() * 6) + 1);
-            alert(numbers);
+            /*alert(numbers);*/
             let redplayer = $("#hdnred").val();
             let yellowplayer = $("#hdnyellow").val();
             let whiteplayer = $("#hdnwhite").val();
@@ -168,20 +199,34 @@
 
                     let player111 = Number(numbers) + Number(redplayer);
 
-                    player11 = laddervalue(player111);
-                    
+                    if (player111 <= 100) {
 
-                    $("#r" + redplayer).hide();
+                        player11 = laddervalue(player111);
+
+
+                        $("#r" + redplayer).hide();
+
+                    } else {
+
+                        player11 = Number(redplayer);
+
+
+                        /*$("#r" + redplayer).hide();*/
+
+
+                    }
                 }
                
 
                 $("#r" + player11).show();
 
-                $("#w" + player11).css("background-color", "orange");
+                $("#r" + player11).css("background-color", "orange");
 
                 $("#hdnred").val(player11);
 
                 $("#player").val("2");
+
+                $("#labelname").text("Player 2");
 
             } else if (players == 2) {
 
@@ -197,22 +242,35 @@
 
                     let player222 = Number(numbers) + Number(yellowplayer);
 
-                    player22 = laddervalue(player222);
+                    if (player222 <= 100) {
 
-                    $("#y" + yellowplayer).hide();
+                        player22 = laddervalue(player222);
+
+
+                        $("#y" + yellowplayer).hide();
+                        
+                    } else {
+
+                        player22 = Number(yellowplayer);
+
+
+                        /* $("#y" + yellowplayer).hide();*/
+
+
+                    }
 
                 }
         
 
                 $("#y" + player22).show();
 
-                $("#w" + player22).css("background-color", "green");
+                $("#y" + player22).css("background-color", "green");
 
                 $("#hdnyellow").val(player22);
 
                 $("#player").val("3");
 
-
+                $("#labelname").text("Player 3");
 
             } else if (players == 3) {
 
@@ -228,9 +286,22 @@
 
                     let player333 = Number(numbers) + Number(whiteplayer);
 
-                    player33 = laddervalue(player333);
+                    if (player333 <= 100) {
 
-                    $("#w" + whiteplayer).hide();
+                        player33 = laddervalue(player333);
+
+
+                        $("#w" + whiteplayer).hide();
+
+                    } else {
+
+                        player33 = Number(whiteplayer);
+
+
+                        /* $("#y" + yellowplayer).hide();*/
+
+
+                    }
                 }
 
 
@@ -242,7 +313,7 @@
 
                 $("#player").val("1");
 
-
+                $("#labelname").text("Player 1");
 
 
             }
@@ -273,8 +344,51 @@
 
             }
 
-            return laddervalues;
+            return snakebites(laddervalues);
 
+        }
+
+        function snakebites(data) {
+
+            const snakein = [43, 50, 56, 73, 84, 87, 98];
+            const snakeout = [17, 5, 8, 15, 63, 49, 40];
+
+            let snakebitevalue = "";
+
+            for (k = 0; k < snakein.length; k++) {
+
+                if (Number(data) == snakein[k]) {
+
+                    snakebitevalue = snakeout[k];
+
+                }
+            }
+
+            if (snakebitevalue == "") {
+
+                snakebitevalue = data;
+            }
+
+            let players = $("#player").val();
+
+            if ((players == 1) && (snakebitevalue == 100)) {
+
+                $("#labelwinner").text("Player 1 Winner");
+                $("#winnershow").show();
+
+            } else if ((players == 2) && (snakebitevalue == 100)) {
+
+                $("#labelwinner").text("Player 2 Winner");
+                $("#winnershow").show();
+
+            } else if ((players == 3) && (snakebitevalue == 100)) {
+
+                $("#labelwinner").text("Player 3 Winner");
+                $("#winnershow").show();
+
+            }
+
+            return snakebitevalue;
         }
 
 
@@ -283,6 +397,8 @@
             $(".content").toggle();
 
             $("#btnpress").show();
+
+            $("#labelname").show();
         }
 
         function startpoppage() {
@@ -290,6 +406,22 @@
             $("#startpage").hide();
 
             $("#selectionplayer").show(1500);
+
+            
+        }
+        function winnerPopup() {
+            $("#winnershow").hide();
+            $("#player").val("");
+            $("#hdnred").val("");
+            $("#hdnyellow").val("");
+            $("#hdnwhite").val("");
+
+            for (l = 0; l <= 100; l++) {
+                $("#r" + l).hide();
+                $("#y" + l).hide();
+                $("#w" + l).hide();
+            }
+
         }
 
     </script>
@@ -345,6 +477,20 @@
             z-index: 100;
             display: none;
         }
+        .winnercontent {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 500px;
+            height: 200px;
+            text-align: center;
+            background-color: #e8eae6;
+            box-sizing: border-box;
+            padding: 10px;
+            z-index: 100;
+            display: none;
+        }
 
         .close-btn {
             position: absolute;
@@ -354,7 +500,6 @@
             color: white;
             border-radius: 50%;
             padding: 4px;
-            
         }
         .floatright{
             float:left;
@@ -1109,13 +1254,13 @@
         </div>
         <div class="floatright" >
 
-            <table style="height:700px">
+            <table >
 
                 <tr>
                     <td>
                         
                         
-
+                        
 
 
 
@@ -1128,7 +1273,7 @@
                     <td>
                     <td>
 
-
+                        <label id="labelname" style="display:none" >player1</label>
                         
                         <button id="btnpress" type="button" onclick="slectedplayer();" title="button" style="display:none" >
                             <img id="diceimage" src="dice/1.PNG" />
@@ -1176,7 +1321,17 @@
             <input type="button" value="OK" onclick="togglePopup();" />
         </div>
 
+        <div id="winnershow" class="winnercontent">
 
+            <div onclick="winnerPopup()" class="close-btn">
+                <a href="#">X</a>
+            </div>
+            <h1>
+
+                <label id="labelwinner"> </label>
+
+            </h1>
+        </div>
 
 
     </form>
