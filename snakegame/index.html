@@ -64,7 +64,7 @@
                         player11 = laddervalue(player111);
 
 
-                        $("#r" + redplayer).hide();
+                        $("#r" + redplayer).hide(1600);
 
                     } else {
 
@@ -80,7 +80,7 @@
                 }
 
 
-                $("#r" + player11).show();
+                $("#r" + player11).show(1700);
 
                 /*$("#r" + player11).focus();*/
 
@@ -113,7 +113,7 @@
                         player22 = laddervalue(player222);
 
 
-                        $("#y" + yellowplayer).hide();
+                        $("#y" + yellowplayer).hide(1600);
 
                     } else {
 
@@ -128,7 +128,7 @@
                 }
 
 
-                $("#y" + player22).show();
+                $("#y" + player22).show(1700);
 
                 /*$("#y" + player22).focus();*/
 
@@ -343,9 +343,41 @@
 
             let laddervalues = "";
 
+            let players = $("#player").val();
+
             for (i = 0; i < laddin.length; i++) {
 
                 if (Number(data) == laddin[i]) {
+
+                    if (players == 1) {
+
+                        $("#r" + data).show(1500);
+
+                    } else if (players == 2) {
+
+                        $("#y" + data).show(1500);
+
+                    } else if (players == 3) {
+
+                        $("#w" + data).show(1500);
+
+                    }
+
+                    if (players == 1) {
+
+                        $("#r" + data).hide(1500);
+
+                    } else if (players == 2) {
+
+                        $("#y" + data).hide(1500);
+
+                    } else if (players == 3) {
+
+                        $("#w" + data).hide(1500);
+
+                    }
+
+                  
 
                     laddervalues = laddout[i];
 
@@ -369,9 +401,42 @@
 
             let snakebitevalue = "";
 
+            let players = $("#player").val();
+
             for (k = 0; k < snakein.length; k++) {
 
                 if (Number(data) == snakein[k]) {
+
+
+                    if (players == 1) {
+
+                        $("#r" + data).show(1500);
+
+                    } else if (players == 2) {
+
+                        $("#y" + data).show(1500);
+
+                    } else if (players == 3) {
+
+                        $("#w" + data).show(1500);
+
+                    }
+
+                    if (players == 1) {
+
+                        $("#r" + data).hide(1500);
+
+                    } else if (players == 2) {
+
+                        $("#y" + data).hide(1500);
+
+                    } else if (players == 3) {
+
+                        $("#w" + data).hide(1500);
+
+                    }
+
+
 
                     snakebitevalue = snakeout[k];
 
@@ -383,22 +448,22 @@
                 snakebitevalue = data;
             }
 
-            let players = $("#player").val();
+            /*let players = $("#player").val();*/
 
             if ((players == 1) && (snakebitevalue == 100)) {
 
                 $("#labelwinner").text("Player 1 Winner");
-                $("#winnershow").show();
+                $("#winnershow").show(1500);
 
             } else if ((players == 2) && (snakebitevalue == 100)) {
 
                 $("#labelwinner").text("Player 2 Winner");
-                $("#winnershow").show();
+                $("#winnershow").show(1500);
 
             } else if ((players == 3) && (snakebitevalue == 100)) {
 
                 $("#labelwinner").text("Player 3 Winner");
-                $("#winnershow").show();
+                $("#winnershow").show(1500);
 
             }
 
@@ -435,6 +500,8 @@
                 $("#y" + l).hide();
                 $("#w" + l).hide();
             }
+
+            $("#diceimage").attr("src","dice/1.PNG");
 
         }
 
@@ -529,7 +596,7 @@
         <table style="width:100%" >
 
             <tr>
-                <td  align="center" style="width:75%;">
+                <td  align="center" style="width:78%;">
 
                     
 
@@ -1262,7 +1329,7 @@
                      
 
                 </td>
-                <td style="width:25%" >
+                <td style="width:22%" >
 
                     <div>
 
